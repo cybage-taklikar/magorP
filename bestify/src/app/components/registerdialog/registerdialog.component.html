@@ -1,0 +1,115 @@
+<br />
+<div class="registerform">
+  <h1 mat-dialog-title>Register</h1>
+  <form
+    [formGroup]="registrationForm"
+    (ngSubmit)="saveRegistration(registrationForm.value)"
+  >
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Enter Username</mat-label>
+        <input
+          type="text"
+          formControlName="username"
+          matInput
+          name="username"
+          placeholder="Username_123"
+          pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$"
+        />
+        <!-- <span *ngIf="f.submitted && name.errors?">Please enter name</span> -->
+        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+        <mat-hint>Should contain alphanumeric characters</mat-hint>
+        <!-- <span>Please enter username</span> -->
+        <span
+          class="text-danger"
+          *ngIf="
+            (saveRegistrationFormControl.username.touched || submitted) &&
+            saveRegistrationFormControl.username.errors?.required
+          "
+        >
+          Username is required
+        </span>
+      </mat-form-field>
+    </p>
+    <br />
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Enter Password</mat-label>
+        <input
+          type="password"
+          formControlName="password"
+          matInput
+          name="password"
+          placeholder="user#1234"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+        />
+        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+        <mat-hint
+          >Min 8 char, atleast 1 uppercase, 1 lowercase letter & 1
+          num..</mat-hint
+        >
+        <span
+          class="text-danger"
+          *ngIf="
+            (saveRegistrationFormControl.password.touched || submitted) &&
+            saveRegistrationFormControl.password.errors?.required
+          "
+        >
+          Password is required
+        </span>
+      </mat-form-field>
+    </p>
+    <br />
+    <!-- <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" formControlName="cpassword" matInput name="cpassword" placeholder="user#1234" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"/>
+        <mat-hint>Should be same as above</mat-hint>
+        <span class="text-danger"
+              *ngIf="(saveRegistrationFormControl.cpassword.touched || submitted) && saveRegistrationFormControl.cpassword.errors?.required">
+              Password is required
+            </span>
+      </mat-form-field>
+    </p> -->
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Enter Email</mat-label>
+        <input
+          type="email"
+          formControlName="email"
+          matInput
+          name="email"
+          placeholder="user@gmail.com"
+          pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+        />
+        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+        <mat-hint>Should be valid email</mat-hint>
+        <span
+          class="text-danger"
+          *ngIf="
+            (saveRegistrationFormControl.email.touched || submitted) &&
+            saveRegistrationFormControl.email.errors?.required
+          "
+        >
+          Email is required
+        </span>
+      </mat-form-field>
+    </p>
+    <br />
+
+    <div mat-dialog-actions>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="!registrationForm.valid"
+        mat-dialog-close
+      >
+        Register
+      </button>
+      &nbsp; &nbsp;
+      <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    </div>
+  </form>
+</div>
+<br />

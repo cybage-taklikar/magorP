@@ -1,0 +1,59 @@
+<div [class.my-alternate-theme]="isThemeChange">
+  <app-header
+    (myevent)="updateTheme($event)"
+    (userprofileclicked)="changeview($event)"
+    (adminpage)="adminview($event)"
+  ></app-header>
+
+  <!-- <app-main3 (myevent)="updateScroll($event)"></app-main3> -->
+  <!-- <app-herosection (myevent)="updateScroll($event)"></app-herosection>
+  <br /><br /><br />
+  <div id="quiz">
+    <app-main1></app-main1>
+  </div>
+  <br /><br /><br />
+  <div id="game">
+    
+    <app-gamesection></app-gamesection>
+  </div>
+  <br /><br /><br /><br /> -->
+
+  <app-home
+    *ngIf="!isprofileclicked"
+    [ngClass]="{ 'admin-class': adminpage }"
+  ></app-home>
+  <!-- <router-outlet></router-outlet> -->
+  <!-- <app-admin [ngClass]="{ 'admin-class': !adminpage }"></app-admin> -->
+  <app-admin *ngIf="adminpage"></app-admin>
+  <app-user-sidenav *ngIf="isprofileclicked"></app-user-sidenav>
+  <!-- <div id="target">
+    <app-admin></app-admin>
+  </div>
+  <br /><br /><br />
+  <app-user-sidenav></app-user-sidenav> -->
+
+  <!-- <app-user></app-user>
+  <app-footer></app-footer> -->
+
+  <!-- <app-my-bar-chart></app-my-bar-chart> -->
+  <!-- ///////////////////////////// -->
+  <!-- <app-line-chart></app-line-chart>
+  <app-pie-chart></app-pie-chart>
+  <app-table-chart></app-table-chart> -->
+  <!-- /////////////////// -->
+  <!-- <div class="chart-container">
+    <div class="chart1">
+      <div class="line">
+        <app-line-chart></app-line-chart>
+      </div>
+      <div class="pie">
+        <app-pie-chart></app-pie-chart>
+      </div>
+    </div>
+    <div class="chart2">
+      <div class="table">
+        <app-table-chart></app-table-chart>
+      </div>
+    </div>
+  </div> -->
+</div>

@@ -1,0 +1,18 @@
+<app-herosection
+  (myevent)="updateScroll($event)"
+  *ngIf="!gamestarted"
+></app-herosection>
+
+<div id="quiz">
+  <app-main1 *ngIf="!gamestarted"></app-main1>
+</div>
+
+<div id="game">
+  <!-- <app-main2></app-main2> -->
+  <app-gamesection
+    (isgamestart)="gamestatus($event)"
+    *ngIf="!gamestarted"
+  ></app-gamesection>
+</div>
+
+<router-outlet></router-outlet>
